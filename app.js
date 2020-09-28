@@ -1,3 +1,11 @@
+/**
+ * @author Kaustubh Khulbe
+ * This is a sorting visualizer
+ */
+
+/**
+ * Initialize all variables
+ */
 var canvas = document.getElementById("canvas");
 var context = canvas.getContext("2d");
 
@@ -11,6 +19,10 @@ let height = canvas.height / 2;
 let time = 10;
 sorted = false;
 
+/**
+ * Dropdown menu
+ * @return none
+ */
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
 }
@@ -29,10 +41,17 @@ window.onclick = function (event) {
   }
 };
 
+/**
+ * Makes thread sleep for ms milliseconds
+ * @param {time duration to sleep in milliseconds} ms
+ */
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+/**
+ * Creates a random array and prepares the canvas
+ */
 function setUp() {
   values = [];
   context.clearRect(0, 0, canvas.width, canvas.height);
@@ -42,12 +61,17 @@ function setUp() {
   drawArray(-2);
 }
 
+/**
+ * draws the array values on the canvas
+ * @param {determines which should be colored red to keep track of} j
+ */
 async function drawArray(j) {
   context.clearRect(0, 0, canvas.width, canvas.height);
   for (var i = 0; i < values.length; i++) {
+    //If i is equal to j color the rectangle j, if it's -1 it means it's completed and
+    //color them green. otherwise just keep it blue
     if (i == j) {
       context.fillStyle = "#FF0000";
-      //context.fillRect(i * xGap, y, width, Math.abs(height - values[i]));
       context.fillRect(i * xGap, y, width, Math.abs(values[i]));
       context.fillStyle = "#00008B";
       continue;
@@ -61,6 +85,9 @@ async function drawArray(j) {
   }
 }
 
+/**
+ * The bubble sort feature
+ */
 async function bubbleSort() {
   var swapp;
   var n = values.length - 1;
@@ -75,9 +102,9 @@ async function bubbleSort() {
         swapp = true;
       }
 
+      //sleeps for time (10 ms) then draws
       values = x;
       await sleep(time);
-      console.log("Stepped");
       drawArray(i);
     }
     n--;
@@ -87,6 +114,9 @@ async function bubbleSort() {
   printArray();
 }
 
+/**
+ * The selection sort feature
+ */
 async function selectionSort() {
   let len = values.length;
   for (let i = 0; i < len; i++) {
@@ -95,6 +125,7 @@ async function selectionSort() {
       if (values[min] > values[j]) {
         min = j;
       }
+      //sleeps for time milliseconds then draws
       await sleep(time);
       drawArray(j);
     }
@@ -110,12 +141,18 @@ async function selectionSort() {
   sorted = true;
 }
 
+/**
+ * prints all elements of array
+ */
 async function printArray() {
   for (var i = 0; i < values.length; i++) {
     console.log("Element: " + values[i]);
   }
 }
 
+/**
+ * main function
+ */
 async function main() {
   context.fillStyle = "#00008B";
   setUp();

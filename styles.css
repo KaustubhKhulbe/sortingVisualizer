@@ -2,6 +2,7 @@ body {
   background-color: rgb(93, 129, 138);
 }
 
+/* h1 tag (Sorting Visualizer) */
 h1 {
   margin: 20px auto;
   border: 3px solid rgb(0, 0, 0);
@@ -17,6 +18,8 @@ canvas {
   text-align: center;
 }
 
+/* General format for all buttons */
+
 .button {
   border: none;
   color: white;
@@ -30,6 +33,8 @@ canvas {
   cursor: pointer;
 }
 
+/* Custom for choose button */
+
 .choose {
   background-color: white;
   color: black;
@@ -41,6 +46,8 @@ canvas {
   color: white;
 }
 
+/* Custom for start button */
+
 .start {
   background-color: white;
   color: black;
@@ -51,6 +58,8 @@ canvas {
   background-color: #008cba;
   color: white;
 }
+
+/* dropdown menu */
 
 .dropbtn {
   background-color: #3498db;
