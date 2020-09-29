@@ -76,7 +76,7 @@ async function drawArray(j) {
       context.fillStyle = "#00008B";
       continue;
     } else if (j == -1) {
-      context.fillStyle = "#00ff00";
+      context.fillStyle = "#006400";
       context.fillRect(i * xGap, y, width, Math.abs(values[i]));
       context.fillStyle = "#00008B";
       continue;
